@@ -13,7 +13,25 @@
     <div><%= flight.flightNo %></div>
     <div>Departure Time: </div>
     <div><%= flight.departs %></div>
+    <div>Meals:</div>
+    <ul>
+      <% flight.dish.forEach(mealItem => { %> 
+        <li><%= mealItem.name %> </li>
+        <% }) %> 
+    </ul>
   </section>
+  <form
+  id="add-meal-to-dish"
+  action="/flights/<%= flight.id %>/meals"
+  method="post"
+  >
+    <select name="mealId">
+      <% meals.forEach(meal => { %> 
+        <option value="<%= meal._id %>"><%= meal.name %> </option>
+      <% }) %> 
+    </select>
+    <button type="submit">Add to Flight</button>
+  </form>
   <section>
     <h2>Tickets</h2>
     <form
