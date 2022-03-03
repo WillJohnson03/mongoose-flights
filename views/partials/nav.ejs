@@ -3,12 +3,14 @@
   <nav>
     <i class="fas fa-plane fa-2x"></i>
     <a 
+    href="/meals/new"
+      <%- title === 'Add Meal' ? 'class="active"' : "" %> 
+    >
+    </a>
+    <a 
       href="/flights/new" <%- title === 'Add flight' ? 'class="active"' : "" %>
     >ADD FLIGHT</a>
     <a 
       href="/flights" <%- title === 'All flights' ? 'class="active"' : "" %>
     >ALL FLIGHTS</a>
-    <a 
-    href="meals/new"
-    >ADD MEAL</a>
   </nav>
