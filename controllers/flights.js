@@ -3,7 +3,6 @@ import { Meal } from '../models/meal.js'
 
 function index(req, res){
   Flight.find({}, function (err, flights){
-    console.log(err)
     res.render('flights/index', {
       flights,
       err,
@@ -31,15 +30,6 @@ function create(req, res) {
   })
 }
 
-// function show(req, res) {
-//   Flight.findById(req.params.id, function(err, flight){
-//     res.render('flights/show',{
-//       flight,
-//       title: 'Flight Detail'
-//     })
-//   })
-// }
-
 function show(req, res) {
   Flight.findById(req.params.id)
   .populate('dish')
@@ -59,7 +49,6 @@ function createTicket(req, res) {
     flight.tickets.push(req.body)
     flight.save(function(err){
       res.redirect(`/flights/${flight._id}`)
-      console.log(flight.ticket)
     })
   })
 }
@@ -68,7 +57,7 @@ function addToDish(req, res) {
   Flight.findById(req.params.id, function(err, flight) {
     flight.dish.push(req.body.mealId)
     flight.save(function(err) {
-      res.redirect(`/flight/${flight._id}`)
+      res.redirect(`/flights/${flight._id}`)
     })
   })
 }

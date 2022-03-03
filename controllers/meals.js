@@ -10,7 +10,8 @@ function newMeal(req, res){
 }
 
 function create(req, res){
-  Meal.create(req.body, function(err, meal) {
+  const meal = new Meal(req.body)
+  meal.save(function(err) {
     res.redirect('/meals/new')
   })
 }
